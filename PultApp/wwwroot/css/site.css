@@ -1,0 +1,295 @@
+html {
+  font-size: 16px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url('../images/arki_gyor_telephely.jpg') #222222;
+    /*background-repeat: no-repeat;*/
+    background-size: 100%;
+    margin-bottom: 60px;
+    background-repeat: repeat-y;
+    background-position: top;
+    
+}
+h1{
+    font-size:30px;
+}
+#logo{
+    height:80px;
+}
+/*#logo{
+    height:160px;
+    position:absolute;
+    top:0;
+    left:3%;
+}*/
+#ktslogo{
+    height:40px;
+}
+.blur {
+    background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(3px);
+}
+.blurModals {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 10px;
+    border-radius: 20px;
+
+}
+.btn{
+    border-radius:30px !important;
+    padding:15px 40px;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 80%;
+    height: 15px;
+    background: #4caf50;
+    border-radius: 30px;
+    outline: none;
+    opacity: 0.5;
+    -webkit-transition: .1s;
+    transition: opacity .1s;
+}
+
+    input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: red;
+        cursor: pointer;
+    }
+
+    input[type="range"]::-moz-range-thumb {
+        width: 30px;
+        height: 30px;
+        background: red;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+/*@media   (max-width: 600px) {
+    #logo {
+        height: 80px;
+        position: absolute;
+        top: 0;
+        left: 3%;
+    }
+}*/
+@media (max-width: 800px) {
+    th:last-child {
+        display:none;
+    }
+    td:last-child {
+        display: none;
+    }
+    th:nth-child(5) {
+        display: none;
+    }
+
+    td:nth-child(5) {
+        display: none;
+    }
+   table{
+       font-size:0.8rem;
+   }
+   th{
+       font-size:0.8rem !important;
+   } 
+}
+#customButton {
+    /* Other button styles */
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    transition: box-shadow 0.3s;
+}
+
+    #customButton:hover {
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    }
+input[type="radio"]:checked {
+    background-color: #b6001e;
+}
+input[type="radio"] {
+    background-color: white;
+}
+.nav-item .nav-link:hover {
+    color: #8a8a8a !important;
+}
+tr:last-child td{
+    border-bottom:none !important;
+}
+.toMiddle {
+   
+    position: absolute;
+    top: 50%;
+
+    transform: translateY(-50%);
+    
+}
+
+.vertical {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    margin-left: -10%;
+}
+.parent{
+    position:relative;
+    width:100%;
+    height:70vh;
+}
+.child {
+    position:absolute;
+    width:100%;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+}
+.pagination > li > a, .pagination > li > span {
+    background-color: black;
+}
+
+.pagination > li.active > a, .pagination > li.active > span {
+    background-color: #0d6efd;
+    border: 1px solid white;
+}
+
+.pagination > li.visited > a, .pagination > li.visited > span {
+    background-color: gray !important;
+}
+
+
+#myTable_ellipsis {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    color: white !important;
+}
+#myTable_previous {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    color: white !important;
+    padding: 8px 16px;
+    border-radius: 20px;
+}
+#myTable_next {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    color: white !important;
+    padding: 8px 16px;
+    border-radius: 20px;
+    
+}
+#myTable_info {
+    color: white;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    margin-top:5px;
+
+    padding: 8px;
+    border-radius: 20px;
+}
+#myTable_length > label {
+    color: white;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 4px 8px;
+    border-radius: 20px;
+    margin-bottom: 5px;
+}
+#myTable_length > label > select {
+    color: black;
+    background: conic-gradient(white,#8a8a8a);
+    background-color: #8a8a8a;
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    font-size: 110%;
+}
+#myTable_filter > label {
+    color: white;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 4px 8px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+    #myTable_filter > label > input[type=search] {
+        color: black;
+        background: conic-gradient(#8a8a8a,white);
+        background-color: #8a8a8a;
+        backdrop-filter: blur(10px);
+        border-radius: 10px;
+        padding-left: 10px;
+        border:2px solid black;
+    }
+#myTable > tbody > tr > td{
+    color:white;
+}
+#myTable_paginate > span > a {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    color: white !important;
+    padding: 8px 16px;
+    border-radius: 20px;
+    border:1px solid black;
+}
+#myTable_paginate > span > a.paginate_button.current {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    color: white !important;
+    padding: 8px 16px;
+    border-radius: 20px;
+    color:black !important;
+}
+pevious.disabled{
+    background-color:black !important;
+}
+
+#myTable_next.disabled {
+    background-color: #8a8a8a !important;
+    color: black !important;
+}
+
+#myTable_previous.disabled {
+    background-color: #8a8a8a !important;
+    color: black !important;
+}
+#myTable_paginate > span > a:hover {
+    background: conic-gradient(#8a8a8a,white);
+    color:black !important;
+    
+}
+#myTable_next:not(.disabled):hover {
+    background: conic-gradient(#8a8a8a, white);
+    color: black !important;
+}
+
+#myTable_next.disabled:hover {
+    background-color: #8a8a8a !important;
+    color: black !important;
+}
+#myTable_previous:not(.disabled):hover {
+    background: conic-gradient(#8a8a8a, white);
+    color: black !important;
+}
+
+#myTable_previous.disabled:hover {
+    background-color: #8a8a8a !important;
+    color: black !important;
+}

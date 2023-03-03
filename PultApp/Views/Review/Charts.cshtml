@@ -1,0 +1,130 @@
+﻿@model List<ReviewChartResult>
+@using Newtonsoft.Json
+
+<div class="container mt-4 text-center admin">
+    <h1 class="fw-bold display-5 mb-1 text-white mx-auto w-75">Vevői elégedettség diagramok</h1>
+  
+    <div class="row mt-4 ">
+        <div class=" col-md-6 col-sm-12 text-white mt-3">
+            <div class="blurModals ">
+                <canvas height="300px" id="myChart"></canvas>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12 text-white mt-3">
+            <div class="blurModals">
+                <canvas height='300px' id="myChart2"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script defer>
+    let avg = (@Model[6].RatingCount* 4 + @Model[5].RatingCount* 3 + @Model[4].RatingCount* 2 + @Model[3].RatingCount) / 
+    (@Model[6].RatingCount + @Model[5].RatingCount + @Model[4].RatingCount + @Model[3].RatingCount)*10/4;
+    window.onload = function () {
+    const ctx = document.getElementById('myChart');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels:  ['😠', '😐', '😊', '😀'],
+            datasets: [{
+                label: 'Vevői visszajelzés',
+                    data: [@Model[6].RatingCount, @Model[5].RatingCount, @Model[4].RatingCount, @Model[3].RatingCount].reverse(),
+                borderWidth: 1,
+                backgroundColor: '#0758a4',
+                    
+            }]
+        },
+        options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        labels: {
+                            // This more specific font property overrides the global property
+                            font: {
+                                size: 16,
+                                family: 'Nunito',
+                            },
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Vevői elégedettségek (1-4) {' + (avg / 2).toFixed(1) + '⭐} [10 / ' + avg.toFixed(2) + ']',
+                        font: {
+                            size: 24,
+                            family: 'Nunito'
+                        },
+                        color: 'white',
+                    },
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            font: {
+                                size: 18,
+                                family: 'Nunito',
+
+                            },
+                            color: 'white'
+                        },
+                    },
+                    x: {
+                        ticks: {
+                            font: {
+                                size: 24,
+                                family: 'Nunito',
+                            },
+                            color: 'white'
+                        },
+                    },
+                },
+                color: 'white',
+        }
+    });
+        feedbackSum = @Model[0].HeardCount+@Model[1].HeardCount+ @Model[2].HeardCount;
+        const ctx2 = document.getElementById('myChart2');
+        new Chart(ctx2, {
+            type: 'doughnut',
+            data:  {
+                labels: ['Régi ügyfél','Ajánlás','Internet'],
+                datasets: [{
+                    label: 'összesen',
+                    data: [@Model[0].HeardCount, @Model[1].HeardCount, @Model[2].HeardCount],
+                    backgroundColor: [
+                        '#8a8a8a', //szürke
+                        '#0758a4', //kék                    
+                        '#b6001e', //piros
+                    ],
+                    hoverOffset: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            // This more specific font property overrides the global property
+                            font: {
+                                size: 18,
+                                family: 'Nunito',
+                            },
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Honnan hallott rólunk? (' + feedbackSum + ' visszajelzés)',
+                        font: {
+                            size: 24,
+                            family: 'Nunito'
+                        },
+                        color: 'white',
+                    },
+                },
+                color: 'white',
+            },
+        });
+    }
+</script>

@@ -1,0 +1,168 @@
+﻿@model IEnumerable<Review>
+
+@{
+    var ReversedModel = from r in Model
+                        orderby r.CreatedAt descending
+                        select r;
+    //var ReversedModel = Enumerable.Reverse(Model);
+}
+
+
+<div class="container mt-5 text-center admin">
+    <h1 class="fw-bold display-4 mb-3 text-white mx-auto w-75">Üdvözli Önt az Árki PultApp admin felülete!</h1>
+    <a asp-controller="Review" asp-action="Charts" class="btn btn-outline-light border blurModals mb-2">
+        <span class="fs-5">Diagramok</span> &nbsp;
+        <svg xmlns="http://www.w3.org/2000/svg"
+             width="25" height="25" fill="currentColor" class="bi bi-bar-chart-fill" viewBox="0 0 16 16">
+            <path d="M1 11a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3zm5-4a1 1 0 0 1 1-1h2a1
+        1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V2z" />
+        </svg>
+    </a>
+    <a asp-controller="Review" asp-action="DownloadCsv" class="btn btn-outline-light border blurModals mb-2">
+        <span class="fs-5">Excel Export </span> &nbsp;
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+             class="bi bi-file-earmark-arrow-down-fill" viewBox="0 0 16 16">
+            <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707
+        4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zm-1 4v3.793l1.146-1.147a.5.5 0 0 1
+        .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 .708-.708L7.5 11.293V7.5a.5.5 0 0 1 1 0z" />
+        </svg>
+    </a>
+    <div class="table-responsive">
+        <table id="myTable" class="mt-3 table table-striped text-white blurModals">
+            <thead class="fs-5 align-middle">
+                <tr>
+                    <th>
+                        Feliratkozott E-mail
+                    </th>
+                    <th>
+                        Feliratkozva?
+                    </th>
+                    <th>
+                        Honnan hallott rólunk?
+                    </th>
+                    <th>
+                        😊
+                    </th>
+                    <th >
+                        Elégedettség (1-4)
+                    </th>
+                    <th>
+                        Bejegyzve
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="align-middle">
+                @foreach (var review in ReversedModel)
+                {
+                    <tr>
+                        <td class="text-white">
+                            @review.Email
+                        </td>
+                        <td class="text-white">
+                            @{
+                                int Subscribed = @review.IsSubscribed;
+                                string isSubscribed;
+
+                                switch (Subscribed)
+                                {
+                                    case 1:
+                                        isSubscribed = "Nem, de feliratkozott.";
+                                        break;
+                                    case 2:
+                                        isSubscribed = "Nem és nem is szeretne.";
+                                        break;
+                                    case 3:
+                                        isSubscribed = "Igen, már korábban.";
+                                        break;
+                                    default:
+                                        isSubscribed = "Érvénytelen érték";
+                                        break;
+                                }
+                            }
+                            @isSubscribed
+                        </td>
+                        <td class="text-white">
+                            @{
+                                int from = @review.Heard;
+                                string Where;
+
+                                switch (from)
+                                {
+                                    case 1:
+                                        Where = "Régi ügyfél vagyok (több mint 1 éve ismerem a céget.";
+                                        break;
+                                    case 2:
+                                        Where = "Új ügyfél vagyok, és ajánlás útján hallottam a cégről.";
+                                        break;
+                                    case 3:
+                                        Where = "Új ügyfél vagyok, interneten találkoztam a céggel.";
+                                        break;
+                                    default:
+                                        Where = "Érvénytelen érték";
+                                        break;
+                                }
+                            }
+                            @Where
+                        </td>
+                        <td class="text-white fs-4">
+                            @{
+                                int rating = @review.Rating;
+                                string Emoji;
+                                switch (rating)
+                                {
+                                    case 1:
+                                        Emoji = "😠";
+                                        break;
+                                    case 2:
+                                        Emoji = "😐";
+                                        break;
+                                    case 3:
+                                        Emoji = "😊";
+                                        break;
+                                    case 4:
+                                        Emoji = "😀";
+                                        break;
+                                    default:
+                                        Emoji = "";
+                                        break;
+                                }
+                            }
+                            @Emoji
+
+                        </td>
+                        <td class="text-white">
+                            @{
+                                int rating2 = @review.Rating;
+                                string Text;
+                                switch (rating2)
+                                {
+                                    case 1:
+                                        Text = "Elégedetlen! (" + rating2 + ")";
+                                        break;
+                                    case 2:
+                                        Text = "Valamennyire elégedett! (" + rating2 + ")";
+                                        break;
+                                    case 3:
+                                        Text = "Elégedett! (" + rating2 + ")";
+                                        break;
+                                    case 4:
+                                        Text = "Nagyon elégedett! (" + rating2 + ")";
+                                        break;
+                                    default:
+                                        Text = "Érvénytelen érték";
+                                        break;
+                                }
+                            }
+                            @Text
+
+                        </td>
+                        <td class="text-white">
+                            @review.CreatedAt
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

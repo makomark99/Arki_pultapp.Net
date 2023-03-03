@@ -1,0 +1,135 @@
+html {
+  font-size: 16px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), url("https://arki.hu/wp-content/uploads/2021/09/arki-gyor-telephely-telep-tuzep-epitoanyag-slider-02.jpg") #222222;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    margin-bottom: 60px;
+    
+}
+
+h1{
+    font-size:30px;
+   
+}
+#logo{
+    height:80px;
+}
+/*#logo{
+    height:160px;
+    position:absolute;
+    top:0;
+    left:3%;
+}*/
+#ktslogo{
+    height:40px;
+}
+.blur {
+    background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(3px);
+  
+    
+}
+.blurModals {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 10px;
+    border-radius: 20px;
+}
+.btn{
+    border-radius:30px !important;
+    padding:15px 40px;
+}
+nav {
+    background-color: #b6001e;
+    height:80px !important;
+}
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 80%;
+    height: 15px;
+    background: #4caf50;
+    border-radius: 30px;
+    outline: none;
+    opacity: 0.5;
+    -webkit-transition: .1s;
+    transition: opacity .1s;
+}
+
+    input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: red;
+        cursor: pointer;
+    }
+
+    input[type="range"]::-moz-range-thumb {
+        width: 30px;
+        height: 30px;
+        background: red;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+/*@media   (max-width: 600px) {
+    #logo {
+        height: 80px;
+        position: absolute;
+        top: 0;
+        left: 3%;
+    }
+}*/
+#customButton {
+    /* Other button styles */
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    transition: box-shadow 0.3s;
+}
+
+    #customButton:hover {
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    }
+input[type="radio"]:checked {
+    background-color: #b6001e;
+}
+input[type="radio"] {
+    background-color: white;
+}
+.nav-item .nav-link:hover {
+    color: #8a8a8a !important;
+}
+tr:last-child td{
+    border-bottom:none !important;
+}
+.toMiddle {
+   
+    position: absolute;
+    top: 50%;
+
+    transform: translateY(-50%);
+    
+}
+
+.vertical {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    margin-left: -10%;
+}
